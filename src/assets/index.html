@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be Beautiful - Catálogo Virtual</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo">Be <span>Beautiful</span></div>
+        
+        <div class="search-box">
+            <input type="text" placeholder="Buscar limpiadores, sérums, maquillaje...">
+        </div>
+        
+        <div class="nav-actions">
+            <button class="btn-login">Iniciar Sesión</button>
+            <div class="cart-icon">🛒 <span id="cart-count">0</span></div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1>Tu rutina de belleza ideal comienza aquí</h1>
+        <p>Explora nuestro catálogo exclusivo de Skincare y Maquillaje</p>
+        <a href="#catalogo" class="btn-cta">Explorar Catálogo</a>
+    </section>
+
+    <section id="catalogo" class="store-container">
+        <div class="filters">
+            <button class="filter-btn active">Todos</button>
+            <button class="filter-btn">Facial</button>
+            <button class="filter-btn">Corporal</button>
+            <button class="filter-btn">Maquillaje</button>
+        </div>
+
+        <main class="products-grid">
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1728487890426-e458ed07122f?q=80&w=500" alt="Sérum Hidratante">
+                <h3>Sérum Hidratante Pro</h3>
+                <p class="brand">Glow Skin</p>
+                <p class="price">$45.000</p>
+                <button class="btn-add">Añadir al carrito</button>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?q=80&w=500" alt="Crema de Noche">
+                <h3>Crema Reparadora Noche</h3>
+                <p class="brand">Aura Beauty</p>
+                <p class="price">$62.000</p>
+                <button class="btn-add">Añadir al carrito</button>
+            </div>
+        </main>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Be Beautifull - Proyecto TSP - Politécnico Grancolombiano</p>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

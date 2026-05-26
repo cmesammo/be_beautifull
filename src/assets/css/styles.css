@@ -1,0 +1,261 @@
+/* ==========================================================================
+   1. CONFIGURACIÓN GENERAL Y VARIABLES
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #FAF8F5;
+    color: #2C2A29;
+    line-height: 1.6;
+}
+
+/* ==========================================================================
+   2. HEADER (Navegación y Barra de Búsqueda)
+   ========================================================================== */
+header {
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #EAE5DC;
+    padding: 15px 5%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+}
+
+header .logo {
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: #2C2A29;
+    text-transform: uppercase;
+}
+
+header .logo span {
+    color: #C5A059; /* Toque dorado en el logo */
+}
+
+.search-box {
+    width: 40%;
+    position: relative;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 8px 15px;
+    border: 1px solid #EAE5DC;
+    border-radius: 4px;
+    background-color: #FAF8F5;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.search-box input:focus {
+    border-color: #C5A059;
+    background-color: #FFFFFF;
+    box-shadow: 0 0 5px rgba(197, 160, 89, 0.2);
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.btn-login {
+    background: none;
+    border: 1px solid #C5A059;
+    color: #C5A059;
+    padding: 6px 18px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-login:hover {
+    background-color: #C5A059;
+    color: #FFFFFF;
+}
+
+.cart-icon {
+    font-size: 20px;
+    cursor: pointer;
+    position: relative;
+}
+
+#cart-count {
+    position: absolute;
+    top: -8px;
+    right: -10px;
+    background-color: #2C2A29;
+    color: #FFFFFF;
+    font-size: 11px;
+    padding: 2px 6px;
+    border-radius: 50%;
+    font-weight: 600;
+}
+
+/* ==========================================================================
+   3. HERO SECTION (Banner de Bienvenida)
+   ========================================================================== */
+.hero {
+    background: linear-gradient(rgba(250, 248, 245, 0.85), rgba(250, 248, 245, 0.85)), 
+                url('https://images.unsplash.com/photo-1556228720-195a672e8a03?q=80&w=1920') no-repeat center center/cover;
+    padding: 100px 5%;
+    text-align: center;
+    border-bottom: 1px solid #EAE5DC;
+}
+
+.hero h1 {
+    font-size: 38px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    color: #2C2A29;
+}
+
+.hero p {
+    font-size: 16px;
+    color: #7A7571;
+    margin-bottom: 30px;
+}
+
+.btn-cta {
+    display: inline-block;
+    background-color: #2C2A29;
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 12px 35px;
+    border-radius: 4px;
+    letter-spacing: 1px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.btn-cta:hover {
+    background-color: #C5A059;
+}
+
+/* ==========================================================================
+   4. SECCIÓN DE TIENDA Y FILTROS
+   ========================================================================== */
+.store-container {
+    padding: 60px 5%;
+}
+
+.filters {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.filter-btn {
+    background: #FFFFFF;
+    border: 1px solid #EAE5DC;
+    padding: 8px 22px;
+    border-radius: 25px;
+    cursor: pointer;
+    color: #7A7571;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover, .filter-btn.active {
+    border-color: #C5A059;
+    color: #C5A059;
+    background-color: #FFFDF9;
+}
+
+/* ==========================================================================
+   5. GRID DE PRODUCTOS (CSS GRID RESPONSIVO)
+   ========================================================================== */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.product-card {
+    background-color: #FFFFFF;
+    border: 1px solid #EAE5DC;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(197, 160, 89, 0.1);
+    border-color: #C5A059;
+}
+
+.product-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    background-color: #FAF8F5;
+}
+
+.product-card h3 {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 5px;
+    color: #2C2A29;
+}
+
+.product-card .brand {
+    font-size: 12px;
+    color: #A39E99;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+.product-card .price {
+    font-size: 18px;
+    font-weight: 600;
+    color: #C5A059; /* Precio destacado en dorado */
+    margin-bottom: 15px;
+}
+
+.btn-add {
+    width: 100%;
+    background-color: #2C2A29;
+    color: #FFFFFF;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.btn-add:hover {
+    background-color: #C5A059;
+}
+
+/* ==========================================================================
+   6. FOOTER
+   ========================================================================== */
+footer {
+    background-color: #FFFFFF;
+    border-top: 1px solid #EAE5DC;
+    padding: 30px 5%;
+    text-align: center;
+    font-size: 13px;
+    color: #A39E99;
+    margin-top: 60px;
+}
