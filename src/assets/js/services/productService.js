@@ -37,7 +37,7 @@ function searchProducts(query) {
         return PRODUCTS;
     }
 
-    const textoBuscado = query.toLowerCase ();
+    const textoBuscado = query.toLowerCase();
 
     return PRODUCTS.filter(function(product) {
         const enNombre = product.name.toLowerCase().includes(textoBuscado);
@@ -56,13 +56,13 @@ function searchProducts(query) {
  * Busqueda avanzada con filtros
  */
 
-function advanceSearch(filtros) {
+function advancedSearch(filtros) {
     //Primero con todo los productos
     let resultado = [...PRODUCTS]; // En alguna ocasion vi que [...] hace una copia del array
 
     // Aplicaremos cada filtro solo si fue especificado
     if (filtros.nombre && filtros.nombre.trim() !== "" ) {
-        const texto = filtros.nombre.ToLowerCase(),
+        const texto = filtros.nombre.toLowerCase();
         resultado = resultado.filter(function(p) {
             return (
                 p.name.toLowerCase().includes(texto) ||
@@ -86,17 +86,17 @@ function advanceSearch(filtros) {
 
     if(filtros.precioMin && filtros.precioMin !== "") {
         resultado = resultado.filter(function(p) {
-            return p.price === Number(filtros.precioMin);
+            return p.price >= Number(filtros.precioMin);
         });
     }
 
     if(filtros.precioMax && filtros.precioMax !== "") {
         resultado = resultado.filter(function(p) {
-            return p.price === Number(filtros.precioMax);
+            return p.price <= Number(filtros.precioMax);
         });
     }
 
-    if(filtros.soloDisponibles && true) {
+    if(filtros.soloDisponibles) {
         resultado = resultado.filter(function(p) {
             return p.stock > 0;
         });
