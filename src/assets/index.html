@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be Beautiful - Catálogo Virtual</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <img src="images/logo_bb_ppal.png" alt="Be Beautiful" class="logo-img">
+    </div>
+    <div class="search-box">
+        <input 
+            type="text" 
+            id="search-input"
+            placeholder="Buscar productos...">
+    </div>
+    <div class="nav-actions">
+        <button class="btn-team" id="btn-abrir-team">👥 Team</button>
+        <div id="auth-section">
+            <button class="btn-login" id="btn-abrir-login">Iniciar Sesión</button>
+        </div>
+        <div class="cart-icon" id="btn-abrir-carrito">
+            🛒
+            <span id="cart-count">0</span>
+        </div>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="hero-content">
+        <h1 style="color: rgb(212, 165, 116);">Tu rutina de belleza ideal comienza aquí</h1>
+        <p style="color: rgb(212, 165, 116);">Explora nuestro catálogo exclusivo de Skincare y tecnología estética</p>
+        <a href="#catalogo" class="btn-cta">Explorar Catálogo</a>
+    </div>
+</section>
+
+<section id="catalogo" class="store-container">
+
+    <div class="filters">
+        <button class="filter-btn active" data-categoria="Todos">Todos</button>
+        <button class="filter-btn" data-categoria="Skincare Facial">Skincare Facial</button>
+        <button class="filter-btn" data-categoria="Beauty Tech Facial">Beauty Tech</button>
+        <button class="filter-btn" data-categoria="Belleza Eléctrica">Belleza Eléctrica</button>
+    </div>
+
+    <div class="busqueda-avanzada" id="busqueda-avanzada">
+        <div class="filtros-avanzados">
+            <div class="filtro-grupo">
+                <label>Precio mínimo</label>
+                <input type="number" id="precio-min" placeholder="0" min="0">
+            </div>
+            <div class="filtro-grupo">
+                <label>Precio máximo</label>
+                <input type="number" id="precio-max" placeholder="500000" min="0">
+            </div>
+            <div class="filtro-grupo filtro-check">
+                <input type="checkbox" id="solo-disponibles">
+                <label for="solo-disponibles">Solo disponibles</label>
+            </div>
+            <button class="btn-filtrar" id="btn-aplicar-filtros">Aplicar filtros</button>
+            <button class="btn-limpiar" id="btn-limpiar-filtros">Limpiar</button>
+        </div>
+    </div>
+
+    <div class="toggle-avanzado">
+        <button id="btn-busqueda-avanzada">⚙ Búsqueda avanzada</button>
+    </div>
+
+    <div id="sin-resultados" class="sin-resultados" style="display:none;">
+        <p>No se encontraron productos con esos filtros.</p>
+    </div>
+
+    <main class="products-grid" id="products-grid">
+    </main>
+
+</section>
+
+<footer>
+    <p>&copy; 2026 Be Beautiful — Proyecto TSP — Politécnico Grancolombiano</p>
+</footer>
+
+
+
+<!-- MODAL: INICIO DE SESIÓN -->
+<div class="modal-overlay" id="modal-login">
+    <div class="modal">
+        <button class="modal-cerrar" id="cerrar-login">&times;</button>
+        <h2 class="modal-titulo">Iniciar sesión</h2>
+        <div class="modal-mensaje" id="mensaje-login" style="display:none;"></div>
+        <div class="form-grupo">
+            <label for="login-email">Correo electrónico</label>
+            <input type="email" id="login-email" placeholder="tu@correo.com">
+        </div>
+        <div class="form-grupo">
+            <label for="login-password">Contraseña</label>
+            <input type="password" id="login-password" placeholder="Tu contraseña">
+        </div>
+        <button class="btn-modal-accion" id="btn-confirmar-login">
+            Iniciar Sesión
+        </button>
+        <p class="modal-link">
+            ¿No tienes cuenta? 
+            <span id="ir-a-registro">Regístrate aquí</span>
+        </p>
+    </div>
+</div>
+
+<!-- MODAL: REGISTRO -->
+<div class="modal-overlay" id="modal-registro">
+    <div class="modal">
+        <button class="modal-cerrar" id="cerrar-registro">&times;</button>
+        <h2 class="modal-titulo">Crear Cuenta</h2>
+        <div class="modal-mensaje" id="mensaje-registro" style="display:none;"></div>
+        <div class="form-grupo">
+            <label for="reg-nombre">Nombre completo</label>
+            <input type="text" id="reg-nombre" placeholder="Tu nombre">
+        </div>
+        <div class="form-grupo">
+            <label for="reg-email">Correo electrónico</label>
+            <input type="email" id="reg-email" placeholder="tu@correo.com">
+        </div>
+        <div class="form-grupo">
+            <label for="reg-password">Contraseña</label>
+            <input type="password" id="reg-password" placeholder="Mínimo 6 caracteres">
+        </div>
+        <div class="form-grupo">
+            <label for="reg-confirmar">Confirmar contraseña</label>
+            <input type="password" id="reg-confirmar" placeholder="Repite tu contraseña">
+        </div>
+        <button class="btn-modal-accion" id="btn-confirmar-registro">
+            Crear Cuenta
+        </button>
+        <p class="modal-link">
+            ¿Ya tienes cuenta? 
+            <span id="ir-a-login">Inicia sesión aquí</span>
+        </p>
+    </div>
+</div>
+
+<!-- MODAL: DETALLE DE PRODUCTO -->
+<div class="modal-overlay" id="modal-producto">
+    <div class="modal modal-producto">
+        <button class="modal-cerrar" id="cerrar-producto">&times;</button>
+        <div class="producto-detalle">
+            <img id="detalle-imagen" src="" alt="">
+            <div class="detalle-info">
+                <span id="detalle-categoria" class="detalle-tag"></span>
+                <h2 id="detalle-nombre"></h2>
+                <p id="detalle-descripcion"></p>
+                <div class="detalle-stock">
+                    <span id="detalle-stock-texto"></span>
+                </div>
+                <p id="detalle-precio" class="detalle-precio"></p>
+                <button class="btn-add btn-detalle-agregar" id="btn-detalle-agregar">
+                    Agregar al carrito
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- PANEL LATERAL: CARRITO -->
+<div class="carrito-overlay" id="carrito-overlay" style="display:none;"></div>
+
+<div class="carrito-panel" id="carrito-panel">
+    <div class="carrito-header">
+        <h3>🛒 Mi Carrito</h3>
+        <button class="modal-cerrar" id="cerrar-carrito">&times;</button>
+    </div>
+    <div class="carrito-items" id="carrito-items"></div>
+    <div class="carrito-footer" id="carrito-footer" style="display:none;">
+        <div class="carrito-total">
+            <span>Total:</span>
+            <span id="carrito-total-precio"></span>
+        </div>
+        <button class="btn-modal-accion" id="btn-confirmar-pedido">
+            Confirmar Pedido
+        </button>
+    </div>
+    <div class="carrito-vacio" id="carrito-vacio">
+        <p>Tu carrito está vacío</p>
+        <p>¡Agrega productos para comenzar!</p>
+    </div>
+</div>
+
+<!-- MODAL: CONFIRMACIÓN DE PEDIDO -->
+<div class="modal-overlay" id="modal-confirmacion">
+    <div class="modal">
+        <h2 class="modal-titulo">¡Pedido Confirmado!</h2>
+        <div id="resumen-pedido"></div>
+        <p class="confirmacion-texto">
+            Gracias por tu compra. En un momento recibirás 
+            la confirmación de tu pedido.
+        </p>
+        <button class="btn-modal-accion" id="btn-cerrar-confirmacion">
+            Continuar comprando
+        </button>
+    </div>
+</div>
+
+<!-- MODAL: ACERCA DE TEAM -->
+<div class="modal-overlay" id="modal-team">
+    <div class="modal modal-team">
+        <button class="modal-cerrar" id="cerrar-team">&times;</button>
+        <h2 class="modal-titulo">👥 Acerca de nosotros</h2>
+        <div class="team-content">
+            <p class="team-intro">Somos estudiantes de <strong>Ingeniería de Software</strong> del <strong>Politécnico Grancolombiano</strong> trabajando en conjunto para crear una solución de e-commerce innovadora.</p>
+            
+            <div class="team-members">
+                <div class="team-member">
+                    <div class="member-avatar">👩‍💻</div>
+                    <h4>Andrea Lozano Beltrán</h4>
+                    <p class="member-role">Team Leader</p>
+                </div>
+                <div class="team-member">
+                    <div class="member-avatar">👨‍💻</div>
+                    <h4>Edison Norvey Luis Sánchez</h4>
+                    <p class="member-role">Planning/Development Manager</p>
+                </div>
+                <div class="team-member">
+                    <div class="member-avatar">👨‍💻</div>
+                    <h4>Camilo Mesa Molina</h4>
+                    <p class="member-role">Development Manager</p>
+                </div>
+                <div class="team-member">
+                    <div class="member-avatar">👩‍💻</div>
+                    <h4>Cindy Lugo Polo</h4>
+                    <p class="member-role">Quality/Process Manager</p>
+                </div>
+                <div class="team-member">
+                    <div class="member-avatar">👨‍💻</div>
+                    <h4>Ángel Damian Jiménez Betancourt</h4>
+                    <p class="member-role">Support Manager</p>
+                </div>
+                <div class="team-member">
+                    <div class="member-avatar">👨‍💻</div>
+                    <h4>Miguel Montañes Ruiz</h4>
+                    <p class="member-role">Support Manager</p>
+                </div>
+            </div>
+            
+            <div class="team-info">
+                <h3>Proyecto TSP 2026</h3>
+                <p><strong>Universidad:</strong> Politécnico Grancolombiano</p>
+                <p><strong>Programa:</strong> Ingeniería de Software</p>
+                <p><strong>Proyecto:</strong> Be Beautiful - Catálogo virtual de productos de belleza</p>
+                <p class="team-description">Nuestro objetivo es desarrollar una plataforma de e-commerce moderna, intuitiva y segura que permita a los usuarios explorar y adquirir productos de belleza y skincare de alta calidad.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Scripts en orden correcto -->
+<script src="js/state/appState.js"></script>
+<script src="js/data/products.js"></script>
+<script src="js/services/storageService.js"></script>
+<script src="js/services/authService.js"></script>
+<script src="js/services/cartService.js"></script>
+<script src="js/services/productService.js"></script>
+<script src="js/ui/productrenderer.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+</html>
